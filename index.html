@@ -294,6 +294,134 @@
             from, to { border-color: transparent }
             50% { border-color: var(--accent); }
         }
+
+        /* Estilos para la sección FODA */
+        .foda-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .foda-box {
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .foda-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+        }
+
+        .foda-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .foda-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            border-radius: 2px;
+        }
+
+        .foda-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .foda-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .foda-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Colores específicos para cada cuadrante FODA */
+        .fortalezas {
+            background: rgba(0, 150, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        .fortalezas .foda-title {
+            color: #00ff00;
+        }
+
+        .fortalezas .foda-title::after {
+            background: #00ff00;
+        }
+
+        .fortalezas li::before {
+            background: #00ff00;
+        }
+
+        .oportunidades {
+            background: rgba(0, 0, 255, 0.1);
+            border: 1px solid rgba(0, 150, 255, 0.2);
+        }
+
+        .oportunidades .foda-title {
+            color: #0096ff;
+        }
+
+        .oportunidades .foda-title::after {
+            background: #0096ff;
+        }
+
+        .oportunidades li::before {
+            background: #0096ff;
+        }
+
+        .debilidades {
+            background: rgba(255, 165, 0, 0.1);
+            border: 1px solid rgba(255, 165, 0, 0.2);
+        }
+
+        .debilidades .foda-title {
+            color: #ffa500;
+        }
+
+        .debilidades .foda-title::after {
+            background: #ffa500;
+        }
+
+        .debilidades li::before {
+            background: #ffa500;
+        }
+
+        .amenazas {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .amenazas .foda-title {
+            color: #ff4d4d;
+        }
+
+        .amenazas .foda-title::after {
+            background: #ff4d4d;
+        }
+
+        .amenazas li::before {
+            background: #ff4d4d;
+        }
     </style>
 </head>
 <body>
@@ -318,10 +446,15 @@
                         <a class="nav-link" href="#soluciones">Soluciones</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#foda">Análisis FODA</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>
-                         <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="organigrama.html">Organigrama</a>
-                          <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="timeline.html">Linea del tiempo</a>
                     </li>
                 </ul>
@@ -554,14 +687,14 @@
                                 <div class="p-3">
                                     <i class="fas fa-medal fa-3x mb-3" style="color: #ffffff; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));"></i>
                                    <h5><b><i>El estándar mínimo es la excelencia.</i></b></h5>
-                                    <p>  “Funciona” no es suficiente: todo debe operar bajo condiciones críticas y con un margen de confiabilidad alto.</p>
+                                    <p>  "Funciona" no es suficiente: todo debe operar bajo condiciones críticas y con un margen de confiabilidad alto.</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
                                 <div class="p-3">
    <i class="fas fa-comment-dots fa-2x mt-1 me-3" style="color: #ffffff;"></i>
                                   <h5><b><i>Comunicación clara y sin ambigüedades.</i></b></h5>
-                                    <p>  En todos los niveles —desde ingeniería hasta logística— la información debe ser directa, sin suposiciones ni “zonas grises”.</p>
+                                    <p>  En todos los niveles —desde ingeniería hasta logística— la información debe ser directa, sin suposiciones ni "zonas grises".</p>
                                 </div>
                             </div>
                         </div>
@@ -713,6 +846,80 @@
             </div>
         </div>
     </section>
+  <section id="foda" class="py-5 my-5 bg-light">
+    <div class="container">
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+          <h2 class="section-title animate__animated animate__fadeInDown">ANÁLISIS FODA</h2>
+          <p class="lead animate__animated animate__fadeInUp animate__delay-1s">
+            Análisis de la situación actual de la empresa basado en sus fortalezas, oportunidades, debilidades y amenazas.
+          </p>
+        </div>
+      </div>
+
+    <div class="row text-center">
+      <!-- Fortalezas -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-success">
+          <div class="card-body">
+            <h5 class="card-title text-success fw-bold">Fortalezas</h5>
+            <ul class="text-start">
+              <li>Alta especialización en tecnología militar y comunicación.</li>
+              <li>Relaciones estratégicas con gobiernos.</li>
+              <li>Experiencia consolidada en seguridad.</li>
+              <li>Capacidad de producción eficiente.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oportunidades -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-primary">
+          <div class="card-body">
+            <h5 class="card-title text-primary fw-bold">Oportunidades</h5>
+            <ul class="text-start">
+              <li>Mayor presupuesto en defensa global.</li>
+              <li>Avances en ciberseguridad militar.</li>
+              <li>Alianzas con potencias emergentes.</li>
+              <li>Expansión internacional creciente.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Debilidades -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-warning">
+          <div class="card-body">
+            <h5 class="card-title text-warning fw-bold">Debilidades</h5>
+            <ul class="text-start">
+              <li>Alta dependencia de contratos públicos.</li>
+              <li>Retorno lento de inversión en I+D.</li>
+              <li>Imagen pública controversial.</li>
+              <li>Riesgo de ciberataques.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amenazas -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="card h-100 shadow-sm border-danger">
+          <div class="card-body">
+            <h5 class="card-title text-danger fw-bold">Amenazas</h5>
+            <ul class="text-start">
+              <li>Regulaciones más estrictas de armas.</li>
+              <li>Cambios geopolíticos inestables.</li>
+              <li>Competencia con menores precios.</li>
+              <li>Presión social antimilitarista.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- Contacto -->
     <section id="contacto" class="py-5 my-5">
