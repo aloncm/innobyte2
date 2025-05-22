@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innobyte - Organigrama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 20px;
+            position: relative;
+        }
+
+        .organigrama {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .nivel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .persona {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px;
+            min-width: 200px;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s ease-in-out;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .persona:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .persona.jefe {
+            font-size: 20px;
+            background: #ff5733;
+        }
+
+        .persona a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .linea {
+            width: 3px;
+            height: 40px;
+            background: #007bff;
+            margin: auto;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Estilo de los botones */
+        .botones {
+            position: fixed;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .boton {
+            background: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .boton:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+
+        .boton.rojo {
+            background: #dc3545;
+        }
+
+        .boton.rojo:hover {
+            background: #c82333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Organigrama de Innobyte</h2>
+
+    <div class="organigrama">
+        <div class="nivel">
+            <div class="persona jefe"><a href="Alan.html">Dueño</a><br> Edgar Alan Paredes Carmona</div>
+        </div>
+
+        <div class="linea"></div>
+
+        <div class="nivel">
+            <div class="persona jefe"> <a href="Etis.html">CEO</a><br>Etienne Leafar Toral Torres </div>
+        </div>
+
+        <div class="linea"></div>
+
+        <div class="nivel">
+            <div class="persona"><a href="Ariel.html">Finanzas</a><br>José Ariel Torreblanca Pineda </div>
+            <div class="persona"><a href="Jose.html">Innovación y desarrollo</a><br>Juan José Álvarez Díaz</div>
+            <div class="persona"><a href="Sebas.html">Gerente Directivo</a><br> Sebastián Marín García</div>
+            <div class="persona"><a href="Luis.html">Supervisor de Áreas<br> Luis Armando Contreras Mejía </a></div>
+        </div>
+
+        <div class="linea"></div>
+
+        <div class="nivel">
+            <div class="persona"><a href="Curiel.html">Seguridad y calidad<br></a> Leonardo Daniel Curiel González</div>
+            <div class="persona"><a href="Fer.html">Analista de datos</a><br> Fernanda Martínez Domínguez</div>
+            <div class="persona"><a href="Tania.html">Recursos Humanos</a><br> Tania Paola Castillo </div>
+            <div class="persona"><a href="Alonso.html">Ingeniero de software</a><br> Alonso Alberto Cortes </div>
+            <div class="persona"><a href="Magali.html">Gerente de Proyecto</a><br> Magali Fuentes Estevez</div>
+            <div class="persona"><a href="Yisus.html">Especialista en Seguridad</a><br> Jesús Alberto Gómez Pérez</div>
+        </div>
+
+        <div class="linea"></div>
+
+        <div class="nivel">
+            <div class="persona"><a href="Ale.html">Técnico en Mantenimiento</a><br> Alessandro</div>
+            <div class="persona"><a href="Lezama.html">Abogado</a><br> Lezama</div>
+            <div class="persona"><a href="Dante.html">Contador</a><br> Dante</div>
+            <div class="persona"><a href="Cris.html">Administrador</a><br> Cristopher Cuevas Martínez</div>
+        </div>
+    </div>
+
+    <!-- Botones de navegación -->
+    <div class="botones">
+        <button class="boton" onclick="window.location.href='index.html'";>Página Principal</button>
+        <button class="boton rojo" onclick="window.location.href='timeline.html'";>Línea del Tiempo</button>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOBYTE | Tecnología Militar Avanzada</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0A0E23;
+            --primary: #1A1F4B;
+            --secondary: #3A4B8A;
+            --accent: #00E5FF;
+            --accent-dark: #008CBA;
+            --text-light: #F0F8FF;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(58, 75, 138, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+        }
+        
+        h1, h2, h3, h4, .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(10,14,35,0.9) 0%, rgba(26,31,75,0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1581092921461-39b2f2f8d6f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            backdrop-filter: blur(2px);
+        }
+        
+        .slogan {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        }
+        
+        .navbar {
+            background: rgba(10, 14, 35, 0.95) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: var(--accent) !important;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .btn-neon {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-neon:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 2px;
+        }
+        
+        .card-tech {
+            background: rgba(26, 31, 75, 0.7);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
+            height: 100%;
+        }
+        
+        .card-tech:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 229, 255, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-box {
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(10, 14, 35, 0.7);
+            border: 1px solid rgba(58, 75, 138, 0.3);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-box:hover {
+            background: rgba(26, 31, 75, 0.7);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1);
+        }
+        
+        .contact-form .form-control {
+            background: rgba(26, 31, 75, 0.7);
+            border: 1px solid rgba(58, 75, 138, 0.5);
+            color: var(--text-light);
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form .form-control:focus {
+            background: rgba(26, 31, 75, 0.9);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+            color: var(--text-light);
+        }
+        
+        .contact-form textarea.form-control {
+            min-height: 150px;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(58, 75, 138, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(58, 75, 138, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        footer {
+            background: rgba(10, 14, 35, 0.95);
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 3rem 0;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 229, 255, 0.1);
+            color: var(--accent);
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        
+        /* Efecto de máquina de escribir */
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 2px;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand animate__animated animate__fadeInLeft" href="#">
+                <i class=""></i>INNOBYTE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto animate__animated animate__fadeInRight">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Quiénes Somos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#soluciones">Soluciones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                         <li class="nav-item">
+                        <a class="nav-link" href="organigrama.html">Organigrama</a>
+                          <li class="nav-item">
+                        <a class="nav-link" href="timeline.html">Linea del tiempo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section d-flex align-items-center">
+        <div class="grid-bg"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content animate__animated animate__fadeInUp">
+                    <h1 class="display-3 fw-bold mb-4">Tecnología <span class="text-accent">Militar</span> de Vanguardia</h1>
+                <p class="slogan mb-4 animate__animated animate__fadeIn">
+    "Sin fallas. Sin ruido. Solo misión cumplida."
+</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#contacto" class="btn btn-neon animate__animated animate__pulse animate__infinite animate__slower">
+                            <i class="fas fa-paper-plane me-2"></i>Contactar
+                        </a>
+                        <a href="#soluciones" class="btn btn-neon animate__animated animate__pulse animate__infinite animate__slower animate__delay-1s">
+                            <i class="fas fa-bullseye me-2"></i>Ver Soluciones
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeInRight">
+                    <img src="innobyte.jpg" alt="Tecnología Militar" class="img-fluid rounded-4 floating" style="box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiénes Somos -->
+    <section id="nosotros" class="py-5 my-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeInDown">Quiénes Somos</h2>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Innobyte es una empresa mexicana especializada en el desarrollo y comercialización de soluciones tecnológicas avanzadas para la defensa y seguridad. Ofrecemos productos y servicios tanto al gobierno como a empresas privadas, garantizando calidad, innovación y cumplimiento normativo.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-6 animate__animated animate__fadeInLeft">
+                    <div class="card-tech p-4 h-100">
+                        <div class="card-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h3>Misión</h3>
+                        <p>Proporcionar soluciones avanzadas y seguras en sistemas de comunicaciones militares, garantizando la interoperabilidad, resiliencia y superioridad tecnológica en entornos operativos complejos, para fortalecer las capacidades estratégicas de defensa nacional.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeInRight">
+                    <div class="card-tech p-4 h-100">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Visión</h3>
+                        <p>Ser líder en innovación tecnológica en el ámbito de las comunicaciones militares, desarrollando plataformas integradas y adaptables que aseguren la conectividad y el mando efectivo en operaciones multidominio, consolidando la soberanía y seguridad nacional.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-4 animate__animated animate__fadeInUp animate__delay-1s">
+                        <h3 class="text-center mb-4">Nuestros Valores</h3>
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-shield-alt text-accent me-2"></i>Seguridad</h4>
+                                    <p>Nuestra prioridad es garantizar sistemas de comunicación seguros que respalden la defensa y soberanía del país.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-cogs text-accent me-2"></i>Innovación Tecnológica</h4>
+                                    <p>Desarrollo continuo de soluciones tecnológicas de vanguardia.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-medal text-accent me-2"></i>Excelencia</h4>
+                                    <p>Calidad superior en cada producto y servicio que ofrecemos.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-handshake text-accent me-2"></i>Integridad</h4>
+                                    <p>Actuamos con ética, confidencialidad y responsabilidad en todos los niveles de nuestra organización y proyectos.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-users text-accent me-2"></i>Colaboración Estratégica</h4>
+                                    <p>Promovemos el trabajo en equipo entre ingenieros, estrategas y operadores para garantizar soluciones integrales.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="feature-box">
+                                    <h4><i class="fas fa-flag text-accent me-2"></i>Lealtad Institucional</h4>
+                                    <p>Colaboramos estrechamente con las fuerzas armadas, alineando nuestros objetivos con sus necesidades críticas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluciones -->
+    <section id="soluciones" class="py-5 bg-dark">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeInDown">Nuestras Soluciones</h2>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Tecnología avanzada para defensa y seguridad</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+                    <div class="card-tech p-4 h-100">
+                        <div class="card-icon">
+                            <i class="fas fa-satellite"></i>
+                        </div>
+                        <h3>Sistemas de Comunicación Segura</h3>
+                        <p>Plataformas encriptadas de última generación para transmisiones tácticas con protección contra guerra electrónica e interceptación.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Encriptación cuántica</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Banda ancha militar</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Resistencia a jamming</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="card-tech p-4 h-100">
+                        <div class="card-icon">
+                            <i class="fas fa-radar"></i>
+                        </div>
+                        <h3>Sistemas de Vigilancia Avanzada</h3>
+                        <p>Tecnología de detección temprana con inteligencia artificial para identificación de amenazas en tiempo real.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Reconocimiento automático</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Integración multisensor</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Análisis predictivo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="card-tech p-4 h-100">
+                        <div class="card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Sistemas Autónomos</h3>
+                        <p>Plataformas no tripuladas para reconocimiento, logística y respuesta táctica en entornos de alto riesgo.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Drones tácticos</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Vehículos autónomos</li>
+                            <li><i class="fas fa-check-circle text-accent me-2"></i> Swarm intelligence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-5 text-center animate__animated animate__zoomIn animate__delay-1s">
+                        <h3 class="mb-4">Cumplimiento Normativo</h3>
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-gavel fa-3x mb-3 text-accent"></i>
+                                    <h5>LFPDPPP</h5>
+                                    <p> Todo el personal debe manejar datos personales de clientes, empleados y aliados conforme a esta ley, aplicando medidas de resguardo, uso y tratamiento responsable.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-lock fa-3x mb-3 text-accent"></i>
+                                    <h5>Seguridad Nacional</h5>
+                                    <p> Se debe seguir un protocolo estricto para el manejo, almacenamiento y transmisión de información estratégica, especialmente si está relacionada con defensa o entidades gubernamentales.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-certificate fa-3x mb-3 text-accent"></i>
+                                    <h5>Normas NOM</h5>
+                                    <p>  Por ejemplo, NOM-019-STPS para la seguridad en instalaciones eléctricas, o NOM-001-SCFI si desarrollan productos electrónicos. Todos los productos, procesos y espacios deben cumplir con las NOMs correspondientes.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-globe fa-3x mb-3 text-accent"></i>
+                                    <h5>Tratados Internacionales</h5>
+                                    <p> Si la empresa maneja tecnología de uso dual (civil/militar), debe atender tratados como el Arreglo de Wassenaar, normas ITAR (en caso de EE.UU.) y regulaciones aduaneras y de exportación vigentes.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-5 text-center animate__animated animate__zoomIn animate__delay-1s">
+                        <h3 class="mb-4">Normativas dentro de la empresa</h3>
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                   <i class="fas fa-handshake-simple-slash fa-3x mb-3 text-accent" 
+   title="Confidencialidad Corporativa"></i>
+                                    <h5><b><i>Confidencialidad total como principio de cultura, no solo obligación legal.</i></b></h5>
+                                    <p> Cada miembro debe manejar la información técnica y operativa como si su vida dependiera de ello.
+</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                  <i class="fas fa-clock-rotate-left fa-3x mb-3 text-accent" 
+   style="color: #ffffff !important;"
+   title="Precisión Operativa"></i>
+                                                       <h5><b><i>Disciplina y puntualidad operativa.</i></b></h5>
+                                    <p>  Las reuniones, entregas y reportes se cumplen con precisión táctica, sin tolerancia a la improvisación innecesaria.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-medal fa-3x mb-3" style="color: #ffffff; filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));"></i>
+                                   <h5><b><i>El estándar mínimo es la excelencia.</i></b></h5>
+                                    <p>  “Funciona” no es suficiente: todo debe operar bajo condiciones críticas y con un margen de confiabilidad alto.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+   <i class="fas fa-comment-dots fa-2x mt-1 me-3" style="color: #ffffff;"></i>
+                                  <h5><b><i>Comunicación clara y sin ambigüedades.</i></b></h5>
+                                    <p>  En todos los niveles —desde ingeniería hasta logística— la información debe ser directa, sin suposiciones ni “zonas grises”.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-5 text-center animate__animated animate__zoomIn animate__delay-1s">
+                        <h3 class="mb-4">Normativas legales.</h3>
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                   <i class="fas fa-file-shield fa-3x mb-3 text-accent"></i>
+                                    <h5><b><i>Ley de Protección de Información Clasificada: Todos los empleados deben firmar un acuerdo de confidencialidad (NDA) y manejar información clasificada según los protocolos establecidos en el Manual de Seguridad de la Información.</i></b></h5>
+                                    <p>
+</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                               <i class="fas fa-key icon-password fa-3x mb-3 text-accent"></i>
+      <i class="fas fa-mobile-screen icon-2fa fa-3x mb-3 text-accent"></i>
+                                                       <h5><b><i>Uso obligatorio de contraseñas seguras y autenticación de dos factores para acceder a los sistemas internos.</i></b></h5>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-ban fa-3x mb-3 text-accent"></i>
+
+                                   <h5><b><i>Prohibición de dispositivos externos no autorizados en las áreas sensibles de trabajo.</i></b></h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-fingerprint fa-3x mb-3 text-accent"></i>
+
+                                  <h5><b><i>Control de Acceso: Se implementará un sistema de credenciales biométricas para garantizar que solo el personal autorizado acceda a instalaciones y datos sensibles.</i></b></h5>
+                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-5 text-center animate__animated animate__zoomIn animate__delay-1s">
+                        <h3 class="mb-4">Normas administrativas.</h3>
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                  <i class="fas fa-file-signature fa-3x mb-3 text-accent"></i>
+
+                                    <h5><b><i>Toda solicitud de compra o gasto debe contar con autorización previa.</i></b></h5>
+                                    <p>
+</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                               <i class="fas fa-file-alt fa-3x mb-3 text-accent"></i>
+
+                                                       <h5><b><i> No se permite la adquisición de materiales, equipos o servicios sin la debida requisición firmada por los responsables administrativos.</i></b></h5>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                 <i class="fas fa-clock fa-3x mb-3 text-accent"></i>
+
+
+                                   <h5><b><i>El personal deberá registrar su entrada y salida en el sistema de control de asistencia.
+ Esto aplica también a salidas temporales, visitas externas o cambios de turno.</i></b></h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-calendar-check fa-3x mb-3 text-accent"></i>
+
+
+                                  <h5><b><i>Los informes de actividades deben entregarse semanalmente (o según cronograma).</i></b></h5>
+                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              <div class="row mt-5">
+                <div class="col-12">
+                    <div class="card-tech p-5 text-center animate__animated animate__zoomIn animate__delay-1s">
+                       
+                        <div class="row g-4">
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                               <i class="fas fa-exclamation-triangle fa-3x mb-3 text-accent"></i>
+
+
+                                    <h5><b><i>El uso de recursos de la empresa (vehículos, equipos, materiales) está limitado a fines laborales.
+ Todo uso indebido se registrará como una falta administrativa.</i></b></h5>
+                                    <p>
+</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                              <i class="fas fa-envelope-open-text fa-3x mb-3 text-accent"></i>
+
+
+                                     <h5><b><i> Toda correspondencia y documentación oficial debe canalizarse por el área administrativa o dirección.
+ No se permite el envío de documentos formales sin revisión y validación interna.</i></b></h5>
+                                  
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                               <i class="fas fa-boxes fa-3x mb-3 text-accent"></i>
+
+
+
+                                   <h5><b><i>El inventario de equipos y materiales debe actualizarse mensualmente.
+ Cada responsable de área está obligado a verificar el estado y existencia de sus recursos asignados.</i></b></h5>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <div class="p-3">
+                                    <i class="fas fa-archive fa-3x mb-3 text-accent"></i>
+
+
+
+                                  <h5><b><i>La documentación técnica, financiera o de proyectos debe archivarse digital y físicamente según protocolos internos.
+ Cada documento debe estar correctamente clasificado, identificado y disponible para auditoría interna.</i></b></h5>
+                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-5 my-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title animate__animated animate__fadeInDown">Contacto</h2>
+                    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Contáctenos para más información sobre nuestras soluciones</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <div class="card-tech p-4 h-100">
+                        <h3 class="mb-4">Información de Contacto</h3>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-map-marker-alt fa-2x text-accent me-3 mt-1"></i>
+                            <div>
+                                <h5>Ubicación</h5>
+                                <p>Av. del Rosal 89, Tepeaca, Álvaro Obregón, 01550 Ciudad de México, CDMX</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-phone-alt fa-2x text-accent me-3 mt-1"></i>
+                            <div>
+                                <h5>Teléfono</h5>
+                                <p>+52 55 1234 5678</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-envelope fa-2x text-accent me-3 mt-1"></i>
+                            <div>
+                                <h5>Email</h5>
+                                <p>contacto@innobyte.mx</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                       
+                            <div class="d-flex mt-3">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="card-tech p-4 h-100">
+                        <h3 class="mb-4">Formulario de Contacto</h3>
+                        <form class="contact-form">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" placeholder="Ingrese su email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" placeholder="Ingrese su teléfono">
+                            </div>
+                            <div class="mb-3">
+                                <label for="empresa" class="form-label">Empresa/Institución</label>
+                                <input type="text" class="form-control" id="empresa" placeholder="Nombre de su organización">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mensaje" class="form-label">Mensaje</label>
+                                <textarea class="form-control" id="mensaje" rows="5" placeholder="Describa su consulta" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-neon">
+                                    <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="text-accent mb-4">INNOBYTE</h3>
+                    <p>Tecnología avanzada para la defensa y seguridad nacional. Soluciones innovadoras con los más altos estándares de calidad y confiabilidad.</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="mb-4">Enlaces</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#inicio" class="text-light">Inicio</a></li>
+                        <li class="mb-2"><a href="#nosotros" class="text-light">Quiénes Somos</a></li>
+                        <li class="mb-2"><a href="#soluciones" class="text-light">Soluciones</a></li>
+                        <li class="mb-2"><a href="#contacto" class="text-light">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="mb-4"></h5>
+                    <ul class="list-unstyled">
+                       
+                    </ul>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <h5 class="mb-4">Suscríbete</h5>
+                    <p>Recibe las últimas actualizaciones sobre nuestras soluciones.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Tu email" aria-label="Tu email">
+                        <button class="btn btn-accent" type="button">Enviar</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small mb-0">© 2025 INNOBYTE. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="small mb-0">Desarrollado con <i class="fas fa-heart text-danger"></i> para México</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts personalizados -->
+    <script>
+        // Animación al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Activar animaciones cuando los elementos son visibles
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.animate__animated');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        const animationClass = element.classList[1];
+                        element.classList.add(animationClass);
+                    }
+                });
+            };
+            
+            // Ejecutar al cargar y al hacer scroll
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Cambiar clase activa en navbar
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let fromTop = window.scrollY + 100;
+                
+                navLinks.forEach(link => {
+                    let section = document.querySelector(link.hash);
+                    
+                    if (section && 
+                        section.offsetTop <= fromTop && 
+                        section.offsetTop + section.offsetHeight > fromTop) {
+                        
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Validación del formulario
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Validar campos requeridos
+                    const requiredFields = contactForm.querySelectorAll('[required]');
+                    let isValid = true;
+                    
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            field.classList.add('is-invalid');
+                            isValid = false;
+                        } else {
+                            field.classList.remove('is-invalid');
+                        }
+                    });
+                    
+                    if (isValid) {
+                        // Simular envío (en producción usar AJAX)
+                        alert('Mensaje enviado con éxito. Nos pondremos en contacto pronto.');
+                        contactForm.reset();
+                    } else {
+                        alert('Por favor complete todos los campos requeridos.');
+                    }
+                });
+            }
+            
+            // Crear partículas flotantes
+            function createParticles() {
+                const container = document.querySelector('body');
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    
+                    // Posición aleatoria
+                    const posX = Math.random() * 100;
+                    const posY = Math.random() * 100;
+                    
+                    // Tamaño aleatorio
+                    const size = Math.random() * 5 + 2;
+                    
+                    // Opacidad aleatoria
+                    const opacity = Math.random() * 0.5 + 0.1;
+                    
+                    // Establecer propiedades
+                    particle.style.left = `${posX}%`;
+                    particle.style.top = `${posY}%`;
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.opacity = opacity;
+                    
+                    // Animación flotante
+                    particle.style.animation = `floating ${Math.random() * 10 + 5}s ease-in-out infinite alternate`;
+                    particle.style.animationDelay = `${Math.random() * 5}s`;
+                    
+                    container.appendChild(particle);
+                }
+            }
+            
+            createParticles();
+        });
+    </script>
+</body>
+</html>
